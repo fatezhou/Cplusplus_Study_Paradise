@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="编码转换">
+      <UniqueIdentifier>{545e98c5-b0bb-4aaf-91b8-dfc5b6bbeb00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="基础类增强">
+      <UniqueIdentifier>{fa48c696-aaf7-4dd2-8e63-b01ac436633f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程">
+      <UniqueIdentifier>{aaca62e0-cd4c-428e-aa3c-e4382ac74e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="系统信息WMI">
+      <UniqueIdentifier>{4aed1373-5756-4913-81fc-abd4449de547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="编码转换\3p">
+      <UniqueIdentifier>{46f84c58-8268-4f35-8cfc-d4137be16070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="线程">
+      <UniqueIdentifier>{5385e6bf-698e-4c02-ae3d-3a354e125699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件管理">
+      <UniqueIdentifier>{4a5d6e6e-a584-4c33-b857-d979deba5dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Socket">
+      <UniqueIdentifier>{0864d8c4-9bd0-467a-9a06-39de055934fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="注册表加强">
+      <UniqueIdentifier>{b22d11cb-3bc5-4eaf-be68-7e3ed74ca50a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TextCode.cpp">
+      <Filter>编码转换</Filter>
+    </ClCompile>
+    <ClCompile Include="stdStringEx.cpp">
+      <Filter>基础类增强</Filter>
+    </ClCompile>
+    <ClCompile Include="Process.cpp">
+      <Filter>进程</Filter>
+    </ClCompile>
+    <ClCompile Include="WMI.cpp">
+      <Filter>系统信息WMI</Filter>
+    </ClCompile>
+    <ClCompile Include="3p\md5.cpp">
+      <Filter>编码转换\3p</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadEx.cpp">
+      <Filter>线程</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoyeeMain.cpp" />
+    <ClCompile Include="FileManange.cpp">
+      <Filter>文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessSnapshot.cpp">
+      <Filter>进程</Filter>
+    </ClCompile>
+    <ClCompile Include="ISocket.cpp">
+      <Filter>Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketClient.cpp">
+      <Filter>Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketFactory.cpp">
+      <Filter>Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketServer.cpp">
+      <Filter>Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="RegEdit.cpp">
+      <Filter>注册表加强</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TextCode.h">
+      <Filter>编码转换</Filter>
+    </ClInclude>
+    <ClInclude Include="stdStringEx.h">
+      <Filter>基础类增强</Filter>
+    </ClInclude>
+    <ClInclude Include="Process.h">
+      <Filter>进程</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleProcess.hpp">
+      <Filter>进程</Filter>
+    </ClInclude>
+    <ClInclude Include="WMI.h">
+      <Filter>系统信息WMI</Filter>
+    </ClInclude>
+    <ClInclude Include="3p\md5.h">
+      <Filter>编码转换\3p</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadEx.h">
+      <Filter>线程</Filter>
+    </ClInclude>
+    <ClInclude Include="zoyeeUtils.h" />
+    <ClInclude Include="FileManange.h">
+      <Filter>文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessSnapshot.h">
+      <Filter>进程</Filter>
+    </ClInclude>
+    <ClInclude Include="ISocket.h">
+      <Filter>Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketClient.h">
+      <Filter>Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketFactory.h">
+      <Filter>Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketServer.h">
+      <Filter>Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="RegEdit.h">
+      <Filter>注册表加强</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
