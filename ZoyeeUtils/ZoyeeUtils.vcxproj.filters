@@ -32,6 +32,9 @@
     <Filter Include="注册表加强">
       <UniqueIdentifier>{b22d11cb-3bc5-4eaf-be68-7e3ed74ca50a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="正则表达式">
+      <UniqueIdentifier>{13110d85-9b7d-4da5-94d4-d41fafe3814e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextCode.cpp">
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="RegEdit.cpp">
       <Filter>注册表加强</Filter>
+    </ClCompile>
+    <ClCompile Include="Regex.cpp">
+      <Filter>正则表达式</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="RegEdit.h">
       <Filter>注册表加强</Filter>
+    </ClInclude>
+    <ClInclude Include="Regex.h">
+      <Filter>正则表达式</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

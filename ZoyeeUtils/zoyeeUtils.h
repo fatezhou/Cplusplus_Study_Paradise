@@ -11,5 +11,6 @@
 #include "FileManange.h"
 #include "SocketFactory.h"
 #include "RegEdit.h"
+#include "Regex.h"
 
 #endif

@@ -30,21 +30,9 @@ ZoyeeUtils::emCopyFileRes CopyFileCallback(long lTotalFileSize, long lTotalBytes
 void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocket* pSocket);
 
 int main(){
-	int nScore = 0;
-	scanf("%d", &nScore);
-	if (nScore >= 90){
-		printf("A");
-	}else if (nScore >= 80){
-		printf("B");
-	}else if (nScore >= 70){
-		printf("C");
-	}else if (nScore >= 60){
-		printf("D");
-	}else{
-		printf("E");
-	}
-
-
+	const char* pSrc = "1234|4444";
+	ZoyeeUtils::CRegex regex(pSrc, "\\d{1,}");
+	std::vector<std::string> vec = regex.GetSearch();
 
 	ZoyeeUtils::CRegister reg(ZoyeeUtils::CRegister::em_local_machine, "Software\\7-Zip", true);
 	reg.EnumValue();

@@ -80,6 +80,7 @@
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessSnapshot.cpp" />
     <ClCompile Include="RegEdit.cpp" />
+    <ClCompile Include="Regex.cpp" />
     <ClCompile Include="SocketClient.cpp" />
     <ClCompile Include="SocketFactory.cpp" />
     <ClCompile Include="SocketServer.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessSnapshot.h" />
     <ClInclude Include="RegEdit.h" />
+    <ClInclude Include="Regex.h" />
     <ClInclude Include="SingleProcess.hpp" />
     <ClInclude Include="SocketClient.h" />
     <ClInclude Include="SocketFactory.h" />
