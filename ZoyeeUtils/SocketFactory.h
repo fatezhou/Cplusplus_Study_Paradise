@@ -5,6 +5,7 @@
 
 namespace ZoyeeUtils{
 	enum SocketType{
+		em_IOCP,
 		em_server,
 		em_client
 	};

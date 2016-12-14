@@ -80,6 +80,9 @@
     <ClCompile Include="Regex.cpp">
       <Filter>正则表达式</Filter>
     </ClCompile>
+    <ClCompile Include="IOCP.cpp">
+      <Filter>Socket</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextCode.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="Regex.h">
       <Filter>正则表达式</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCP.h">
+      <Filter>Socket</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

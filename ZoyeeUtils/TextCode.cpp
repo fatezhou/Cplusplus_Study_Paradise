@@ -20,21 +20,23 @@ bool ZoyeeUtils::CTextCode::ToChar( wchar_t* pSrc, char* pDesc )
 bool ZoyeeUtils::CTextCode::GBK2UTF8( char* pBuff )
 {
 	int nLen = ::MultiByteToWideChar(CP_ACP, 0, (char*)pBuff, -1, NULL, NULL);
-	wchar_t* pwBuff = new wchar_t[nLen + 1];
-	MultiByteToWideChar(CP_ACP, 0, (char*)pBuff, -1, pwBuff, nLen);
+	wstring wstrBuff;
+	wstrBuff.resize(nLen + 2);
+	MultiByteToWideChar(CP_ACP, 0, (char*)pBuff, -1, (wchar_t*)wstrBuff.data(), nLen);
 
-	nLen = ::WideCharToMultiByte(CP_UTF8, 0, pwBuff, -1, NULL, 0, NULL, NULL); 	 
-	return ::WideCharToMultiByte(CP_UTF8, 0, pwBuff, -1, (char *)pBuff, nLen, NULL, NULL) == nLen;
+	nLen = ::WideCharToMultiByte(CP_UTF8, 0, (wchar_t*)wstrBuff.data(), -1, NULL, 0, NULL, NULL); 	 
+	return ::WideCharToMultiByte(CP_UTF8, 0, (wchar_t*)wstrBuff.data(), -1, (char *)pBuff, nLen, NULL, NULL) == nLen;
 }
 
 bool ZoyeeUtils::CTextCode::UTF82GBK( char* pBuff )
 {
 	int nLen = ::MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, NULL, NULL);
-	wchar_t* pwBuff = new wchar_t[nLen + 1];
-	MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, pwBuff, nLen);
+	wstring wstrBuff;
+	wstrBuff.resize(nLen + 2);
+	MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, (wchar_t*)wstrBuff.data(), nLen);
 
-	nLen = ::WideCharToMultiByte(CP_ACP, 0, pwBuff, -1, NULL, 0, NULL, NULL); 	 
-	return ::WideCharToMultiByte(CP_ACP, 0, pwBuff, -1, (char *)pBuff, nLen, NULL, NULL) == nLen;
+	nLen = ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)wstrBuff.data(), -1, NULL, 0, NULL, NULL); 	 
+	return ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)wstrBuff.data(), -1, (char *)pBuff, nLen, NULL, NULL) == nLen;
 }
 
 std::string ZoyeeUtils::CTextCode::Base64Encode( const char* pSrc, int nLen )

@@ -18,6 +18,7 @@ namespace ZoyeeUtils{
 		ISocket(pOnRecv pRecvCallback);
 		virtual int Init(char* pSrcIP, int nPort);
 		void Init(char* pSrcIP, int nPort, unsigned int nSocket);
+		
 		virtual int Send(const char* pszBuff, int nLen) = 0;
 		virtual int Send(const char* pszBuff, int nLen, unsigned int nFailRetryTimes, bool bCallbackResults) = 0;
 		virtual int Close() = 0;

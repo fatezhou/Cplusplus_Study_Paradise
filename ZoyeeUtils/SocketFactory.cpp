@@ -1,6 +1,7 @@
 #include "SocketFactory.h"
 #include "SocketServer.h"
 #include "SocketClient.h"
+#include "IOCP.h"
 
 using namespace ZoyeeUtils;
 
@@ -19,6 +20,9 @@ ISocket* ZoyeeUtils::SocketFactory::MakeSocket( SocketType nType, void* pData )
 {
 	switch (nType)
 	{
+	case em_IOCP:
+		return new IOCPServer((pOnRecv)pData);
+		break;
 	case em_client:
 		return new SocketClient((pOnRecv)pData);
 		break;

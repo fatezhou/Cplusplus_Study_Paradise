@@ -5,6 +5,14 @@
 #include <vector>
 
 namespace ZoyeeUtils{
+	class CRegexStringMaker{
+	public:
+		std::string ToString();
+
+	private:
+		std::vector<std::string> m_vec;
+	};
+
 	class CRegex
 	{
 	public:

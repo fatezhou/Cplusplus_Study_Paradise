@@ -29,13 +29,38 @@ ZoyeeUtils::emCopyFileRes CopyFileCallback(long lTotalFileSize, long lTotalBytes
 
 void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocket* pSocket);
 
+std::string Change(std::string& sz){		
+	return sz.substr(sz.find('_') + 1, sz.rfind('_') - sz.find('_')) + sz.substr(0, sz.find('_')) + "_" + sz.substr(sz.rfind('_') + 1, sz.npos);	
+}
+#include <time.h>
 int main(){
-	const char* pSrc = "1234|4444";
-	ZoyeeUtils::CRegex regex(pSrc, "\\d{1,}");
-	std::vector<std::string> vec = regex.GetSearch();
+	ZoyeeUtils::ISocket* pIOCP = ZoyeeUtils::SocketFactory::MakeSocket(ZoyeeUtils::em_IOCP, OnRecv);
+	pIOCP->Init("127.0.0.1", 6666);
+	while(1){
+		Sleep(1000);
+	}
+	printf("");
 
-	ZoyeeUtils::CRegister reg(ZoyeeUtils::CRegister::em_local_machine, "Software\\7-Zip", true);
-	reg.EnumValue();
+	/*char szTime[32];
+	sprintf(szTime, "%I64d", time(0));
+
+	std::string str1 = "abc_id_game.jpg";
+	str1 = Change(str1);
+*/
+
+
+
+
+
+	ZoyeeUtils::CWMI wmi;
+	wmi.Init();
+	std::string str = wmi.GetSystemInfo(ZoyeeUtils::CWMI::Win32_NetworkAdapter);
+	//const char* pSrc = "1234|4444";
+	//ZoyeeUtils::CRegex regex(pSrc, "\\d{1,}");
+	//std::vector<std::string> vec = regex.GetSearch();
+
+	//ZoyeeUtils::CRegister reg(ZoyeeUtils::CRegister::em_local_machine, "Software\\7-Zip", true);
+	//reg.EnumValue();
 	//reg.EnumSubKey();
 	/*reg.GetValue("Path");
 	reg.SetValue("Fuck", "223344", false);*/
@@ -72,10 +97,11 @@ int main(){
 	//HANDLE hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
 	//SetEvent(hEvent);
 	//pro.StartEx(CmdOut, strOutput, hEvent);
-	//ZoyeeUtils::CWMI wmi;
-	//wmi.Init();
-	//std::string str = wmi.GetSystemInfo(ZoyeeUtils::CWMI::Win32_OperatingSystem);
-	//std::string str = wmi.ExecWQL("select caption from Win32_OperatingSystem");
+
+//	std::string str = wmi.GetSystemInfo(ZoyeeUtils::CWMI::Win32_OperatingSystem);
+	str = wmi.ExecWQL("select *   from Win32_NetworkAdapter where PhysicalAdapter  = TRUE");
+	
+	printf("");
 	//std::cout << str.c_str();
 	//std::string str64 = ZoyeeUtils::CTextCode::Base64Encode("Hello", strlen("Hello"));
 	//str64 = ZoyeeUtils::CTextCode::Base64Decode(str64.c_str(), strlen(str64.c_str()));

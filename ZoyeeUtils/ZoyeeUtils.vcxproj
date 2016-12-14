@@ -76,6 +76,7 @@
   <ItemGroup>
     <ClCompile Include="3p\md5.cpp" />
     <ClCompile Include="FileManange.cpp" />
+    <ClCompile Include="IOCP.cpp" />
     <ClCompile Include="ISocket.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessSnapshot.cpp" />
@@ -93,6 +94,7 @@
   <ItemGroup>
     <ClInclude Include="3p\md5.h" />
     <ClInclude Include="FileManange.h" />
+    <ClInclude Include="IOCP.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessSnapshot.h" />
