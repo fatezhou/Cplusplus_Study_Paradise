@@ -26,6 +26,8 @@ int ZoyeeUtils::SocketClient::Init( char* pSrcIP, int nPort )
 	}else{
 		GetRecvCallback()("connect ok!", 0, ZoyeeUtils::em_on_connect, this);
 	}
+	//SO_REUSEADDR
+
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)OnRecvThread, this, 0, 0);
 	return 0;
 }

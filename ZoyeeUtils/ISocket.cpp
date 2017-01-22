@@ -14,6 +14,11 @@ int ZoyeeUtils::ISocket::Init( char* pSrcIP, int nPort )
 	WSAData wsaData;
 	WSAStartup(0x0202, &wsaData);
 	m_nSocket = socket(AF_INET, SOCK_STREAM, 0);
+	//让socket 马上释放端口而不经过timeout_wait
+	//BOOL bReuseaddr=TRUE;
+	//setsockopt(m_nSocket, SOL_SOCKET, SO_REUSEADDR, (const char*)&bReuseaddr, sizeof(BOOL));
+	//BOOL  bDontLinger = FALSE; 
+	//setsockopt(m_nSocket, SOL_SOCKET, SO_DONTLINGER, (const char*)&bDontLinger, sizeof(BOOL));
 	return 0;
 }
 

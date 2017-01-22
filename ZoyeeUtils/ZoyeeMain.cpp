@@ -29,11 +29,10 @@ ZoyeeUtils::emCopyFileRes CopyFileCallback(long lTotalFileSize, long lTotalBytes
 
 void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocket* pSocket);
 
-std::string Change(std::string& sz){		
-	return sz.substr(sz.find('_') + 1, sz.rfind('_') - sz.find('_')) + sz.substr(0, sz.find('_')) + "_" + sz.substr(sz.rfind('_') + 1, sz.npos);	
-}
 #include <time.h>
-int main(){
+#include <typeinfo>
+
+int main(){	
 	ZoyeeUtils::ISocket* pIOCP = ZoyeeUtils::SocketFactory::MakeSocket(ZoyeeUtils::em_IOCP, OnRecv);
 	pIOCP->Init("127.0.0.1", 6666);
 	while(1){
@@ -49,12 +48,9 @@ int main(){
 */
 
 
-
-
-
-	ZoyeeUtils::CWMI wmi;
-	wmi.Init();
-	std::string str = wmi.GetSystemInfo(ZoyeeUtils::CWMI::Win32_NetworkAdapter);
+	//ZoyeeUtils::CWMI wmi;
+	//wmi.Init();
+	//std::string str = wmi.GetSystemInfo(ZoyeeUtils::CWMI::Win32_NetworkAdapter);
 	//const char* pSrc = "1234|4444";
 	//ZoyeeUtils::CRegex regex(pSrc, "\\d{1,}");
 	//std::vector<std::string> vec = regex.GetSearch();
@@ -99,9 +95,9 @@ int main(){
 	//pro.StartEx(CmdOut, strOutput, hEvent);
 
 //	std::string str = wmi.GetSystemInfo(ZoyeeUtils::CWMI::Win32_OperatingSystem);
-	str = wmi.ExecWQL("select *   from Win32_NetworkAdapter where PhysicalAdapter  = TRUE");
-	
-	printf("");
+	//str = wmi.ExecWQL("select *   from Win32_NetworkAdapter where PhysicalAdapter  = TRUE");
+	//
+	//printf("");
 	//std::cout << str.c_str();
 	//std::string str64 = ZoyeeUtils::CTextCode::Base64Encode("Hello", strlen("Hello"));
 	//str64 = ZoyeeUtils::CTextCode::Base64Decode(str64.c_str(), strlen(str64.c_str()));
@@ -140,6 +136,7 @@ void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocke
 	{
 	case ZoyeeUtils::em_on_recv:
 		printf("[recv][%s:%d][%s]\n", pSocket->GetIP().c_str(), pSocket->GetPort(), pBuff);
+		pSocket->Send("Hello", 5);
 		break;
 	case ZoyeeUtils::em_on_error:
 		printf("[error][%s:%d][%s]\n", pSocket->GetIP().c_str(), pSocket->GetPort(), pBuff);

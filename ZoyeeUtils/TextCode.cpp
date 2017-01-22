@@ -142,3 +142,17 @@ std::string ZoyeeUtils::CTextCode::Md5( const char* pSrc, int nLen )
 	}
 	return strOutput;
 }
+
+std::string ZoyeeUtils::CTextCode::UTF2GBK( char* pBuff )
+{
+	int nLen = ::MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, NULL, NULL);
+	wstring wstrBuff;
+	wstrBuff.resize(nLen + 2);
+	MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, (wchar_t*)wstrBuff.data(), nLen);
+
+	nLen = ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)wstrBuff.data(), -1, NULL, 0, NULL, NULL); 	 
+	std::string strOutput;
+	strOutput.resize(nLen);
+	::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)wstrBuff.data(), -1, (char *)strOutput.data(), nLen, NULL, NULL);
+	return strOutput;
+}
