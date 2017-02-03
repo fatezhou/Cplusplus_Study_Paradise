@@ -75,9 +75,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="3p\md5.cpp" />
+    <ClCompile Include="CrashDebuger.cpp" />
+    <ClCompile Include="Debuger.cpp" />
     <ClCompile Include="FileManange.cpp" />
     <ClCompile Include="IOCP.cpp" />
     <ClCompile Include="ISocket.cpp" />
+    <ClCompile Include="LiteLog.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessSnapshot.cpp" />
     <ClCompile Include="RegEdit.cpp" />
@@ -93,9 +96,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3p\md5.h" />
+    <ClInclude Include="CrashDebuger.h" />
     <ClInclude Include="FileManange.h" />
     <ClInclude Include="IOCP.h" />
     <ClInclude Include="ISocket.h" />
+    <ClInclude Include="LiteLog.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessSnapshot.h" />
     <ClInclude Include="RegEdit.h" />

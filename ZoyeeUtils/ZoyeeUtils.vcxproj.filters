@@ -35,6 +35,12 @@
     <Filter Include="正则表达式">
       <UniqueIdentifier>{13110d85-9b7d-4da5-94d4-d41fafe3814e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dump跟踪">
+      <UniqueIdentifier>{68bfba72-4a91-4add-a727-35991360ed34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="日志类">
+      <UniqueIdentifier>{ada48702-7c9e-4c66-bd53-cd563b910f6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextCode.cpp">
@@ -82,6 +88,15 @@
     </ClCompile>
     <ClCompile Include="IOCP.cpp">
       <Filter>Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="Debuger.cpp">
+      <Filter>dump跟踪</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashDebuger.cpp">
+      <Filter>dump跟踪</Filter>
+    </ClCompile>
+    <ClCompile Include="LiteLog.cpp">
+      <Filter>日志类</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="IOCP.h">
       <Filter>Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashDebuger.h">
+      <Filter>dump跟踪</Filter>
+    </ClInclude>
+    <ClInclude Include="LiteLog.h">
+      <Filter>日志类</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
