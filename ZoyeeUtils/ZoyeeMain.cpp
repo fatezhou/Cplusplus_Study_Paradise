@@ -31,14 +31,45 @@ void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocke
 
 #include <time.h>
 #include <typeinfo>
+#include <map>
+
+#include "AutoLockMacro.h"
+#include "AutoLockClass.h"
+#include "DebugView.h"
+
+class Base{
+public:
+	void DoWork();
+	IMPLEMENT_LOCKING(Base);
+	_KEY_;
+};
+
+void Base::DoWork(){
+	AUTOLOCK;
+	_LOCK_;
+}
 
 int main(){	
-	ZoyeeUtils::ISocket* pIOCP = ZoyeeUtils::SocketFactory::MakeSocket(ZoyeeUtils::em_IOCP, OnRecv);
-	pIOCP->Init("127.0.0.1", 6666);
-	while(1){
-		Sleep(1000);
-	}
-	printf("");
+	std::vector<std::string> vec;
+	vec.push_back("yz-xiaopiplayer.exe");
+	ZoyeeUtils::CDebugView view(vec);
+	view.Start();
+	//HWND hwnd = FindWindowA(NULL, "–°∆§“˝«Ê¡Ï∫Ω∞Ê-1");
+	//SendMessageA(hwnd, WM_SYSCOMMAND, SC_RESTORE, NULL);
+	//return 0;
+
+	//std::map<int, int> _map;
+	//_map[0] = 0;
+	//_map[1] = 1;
+	//for (auto iter = begin(_map); iter != end(_map); iter++){
+	//	printf("%d", iter->first);
+	//}
+	//ZoyeeUtils::ISocket* pIOCP = ZoyeeUtils::SocketFactory::MakeSocket(ZoyeeUtils::em_IOCP, OnRecv);
+	//pIOCP->Init("127.0.0.1", 6666);
+	//while(1){
+	//	Sleep(1000);
+	//}
+	//printf("");
 
 	/*char szTime[32];
 	sprintf(szTime, "%I64d", time(0));

@@ -41,6 +41,15 @@
     <Filter Include="日志类">
       <UniqueIdentifier>{ada48702-7c9e-4c66-bd53-cd563b910f6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dll相关">
+      <UniqueIdentifier>{58312bca-1658-495a-9f21-76fed5293ded}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="锁">
+      <UniqueIdentifier>{646a57a8-929a-4d45-ab68-ad014b6cb9f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debugView">
+      <UniqueIdentifier>{fd7e8913-a0f8-4c93-b6e7-258604731190}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextCode.cpp">
@@ -97,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="LiteLog.cpp">
       <Filter>日志类</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugView.cpp">
+      <Filter>debugView</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,8 +167,17 @@
     <ClInclude Include="LiteLog.h">
       <Filter>日志类</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <ClInclude Include="DllLoader.h">
+      <Filter>Dll相关</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoLockClass.h">
+      <Filter>锁</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoLockMacro.h">
+      <Filter>锁</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugView.h">
+      <Filter>debugView</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

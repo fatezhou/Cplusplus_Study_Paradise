@@ -77,6 +77,7 @@
     <ClCompile Include="3p\md5.cpp" />
     <ClCompile Include="CrashDebuger.cpp" />
     <ClCompile Include="Debuger.cpp" />
+    <ClCompile Include="DebugView.cpp" />
     <ClCompile Include="FileManange.cpp" />
     <ClCompile Include="IOCP.cpp" />
     <ClCompile Include="ISocket.cpp" />
@@ -96,7 +97,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3p\md5.h" />
+    <ClInclude Include="AutoLockClass.h" />
+    <ClInclude Include="AutoLockMacro.h" />
     <ClInclude Include="CrashDebuger.h" />
+    <ClInclude Include="DebugView.h" />
+    <ClInclude Include="DllLoader.h" />
     <ClInclude Include="FileManange.h" />
     <ClInclude Include="IOCP.h" />
     <ClInclude Include="ISocket.h" />
@@ -114,9 +119,6 @@
     <ClInclude Include="ThreadEx.h" />
     <ClInclude Include="WMI.h" />
     <ClInclude Include="zoyeeUtils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

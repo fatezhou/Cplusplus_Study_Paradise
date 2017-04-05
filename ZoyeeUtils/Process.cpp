@@ -4,6 +4,8 @@
 #include <Windows.h>
 #include <stdarg.h>
 
+#include <TlHelp32.h>
+
 using namespace ZoyeeUtils;
 
 ZoyeeUtils::CProcess::CProcess( char* pProcessPath)
@@ -189,6 +191,63 @@ int ZoyeeUtils::CProcess::StartEx(pEndCallback pCallback, std::string& strOutput
 		return -3;
 	}
 	return 0;
+}
+
+std::string ToChar( wchar_t* pSrc )
+{
+	std::string str;
+	int nLen = ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)pSrc, -1, 0, 0, 0, 0);
+	if (nLen <= 0){
+		return "";
+	}
+	str.resize(nLen);
+	WideCharToMultiByte(CP_ACP, 0, (wchar_t*)pSrc, -1, (char*)str.data(), nLen, 0, 0);
+	return str;
+}
+
+int ZoyeeUtils::CProcess::GetProcessId( char* pProcessName )
+{
+	PROCESSENTRY32 pe32;
+	pe32.dwSize = sizeof(pe32);
+
+	HANDLE hProcessSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	if (hProcessSnap == INVALID_HANDLE_VALUE)
+	{
+		return -1;
+	}
+	int nCount = 0;
+	BOOL bMore = ::Process32First(hProcessSnap, &pe32);  
+	while(bMore){
+		std::string strProcessName = ToChar(pe32.szExeFile);
+		if (stricmp(strProcessName.c_str(), pProcessName) == 0)
+		{
+			return pe32.th32ProcessID;
+		}
+		bMore = ::Process32Next(hProcessSnap, &pe32);
+	}
+	return -1;
+}
+
+char* ZoyeeUtils::CProcess::GetProcessName( int nPid )
+{
+	PROCESSENTRY32 pe32;
+	pe32.dwSize = sizeof(pe32);
+
+	HANDLE hProcessSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	if (hProcessSnap == INVALID_HANDLE_VALUE)
+	{
+		return "";
+	}
+	int nCount = 0;
+	BOOL bMore = ::Process32First(hProcessSnap, &pe32);  
+	std::string strProcessName;
+	while(bMore){
+		if (pe32.th32ProcessID == nPid){
+			return (char*)ToChar(pe32.szExeFile).c_str();
+		}
+		bMore = ::Process32Next(hProcessSnap, &pe32);
+	}
+	return "";
 }
 
 CProcess::CProcess(char* pProcessPath, char* pFmt, ...){

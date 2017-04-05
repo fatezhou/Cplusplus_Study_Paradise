@@ -6,13 +6,14 @@
 namespace ZoyeeUtils{
 	enum SocketType{
 		em_IOCP,
-		em_server,
+		em_PCPT,//Per connection per thread
+		em_Select,
 		em_client
 	};
 	class SocketFactory{
 	public:
 		static SocketFactory* GetInstance();
-		static ISocket* MakeSocket(SocketType nType, void* pData);
+		static ISocket* MakeSocket(SocketType nType, void* pRecvFunction);
 	private:
 		SocketFactory();
 	};

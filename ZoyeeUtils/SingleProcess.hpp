@@ -6,7 +6,7 @@
 namespace zoyee{
 	class CSingleProcess{
 	public:
-		CSingleProcess(char* pSingeName, int nWaitTimeout = 50) : nTimeout(nWaitTimeout), hMutex(NULL){
+		CSingleProcess(char* pSingeName, int nWaitTimeout = 10) : nTimeout(nWaitTimeout), hMutex(NULL){
 			if (pSingeName){
 				hMutex = CreateMutexA(NULL, FALSE, pSingeName);
 			}			

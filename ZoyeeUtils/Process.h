@@ -18,7 +18,11 @@ namespace ZoyeeUtils{
 
 		int StartEx(pEndCallback pCallback, std::string& strOutput, void* hInteraptEvent = nullptr, int nTimeOutMillisecond = -1);// -1 means INFINITE
 		//这函数为同步函数, 若非超时或目录进程关闭, 不会返回
-		
+
+		static int GetProcessId(char* pProcessName);
+		static char* GetProcessName(int nPid);
+		static int CloseProcessById(int nPid);
+		static int CloseProcessByProcessName(char* pProcessName, bool bAllSomeName = true);
 	private:
 		char* m_pProcessPath;
 		char* m_pCmd;

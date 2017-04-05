@@ -18,6 +18,8 @@ namespace ZoyeeUtils{
 		static std::string Replace(std::string strText, std::string src, std::string desc);
 		int ToInt();
 		float toFloat();
+		std::string ToStdString();
+		std::wstring ToStdWString();
 	};
 }
 #endif

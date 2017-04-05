@@ -26,7 +26,7 @@ ISocket* ZoyeeUtils::SocketFactory::MakeSocket( SocketType nType, void* pData )
 	case em_client:
 		return new SocketClient((pOnRecv)pData);
 		break;
-	case em_server:
+	case em_PCPT:
 		return new SocketServer((pOnRecv)pData);
 		break;
 	default:
