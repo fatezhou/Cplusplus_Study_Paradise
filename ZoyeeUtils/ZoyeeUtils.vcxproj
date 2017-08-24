@@ -20,6 +20,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -74,51 +75,70 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="3p\BlowFish.cpp" />
     <ClCompile Include="3p\md5.cpp" />
+    <ClCompile Include="ConfigManagement.cpp" />
     <ClCompile Include="CrashDebuger.cpp" />
     <ClCompile Include="Debuger.cpp" />
     <ClCompile Include="DebugView.cpp" />
+    <ClCompile Include="Encrypt.cpp" />
     <ClCompile Include="FileManange.cpp" />
+    <ClCompile Include="FileMemory.cpp" />
+    <ClCompile Include="Guid.cpp" />
     <ClCompile Include="IOCP.cpp" />
+    <ClCompile Include="IPCInterface.cpp" />
     <ClCompile Include="ISocket.cpp" />
     <ClCompile Include="LiteLog.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessSnapshot.cpp" />
     <ClCompile Include="RegEdit.cpp" />
     <ClCompile Include="Regex.cpp" />
+    <ClCompile Include="ShareMemory.cpp" />
     <ClCompile Include="SocketClient.cpp" />
     <ClCompile Include="SocketFactory.cpp" />
     <ClCompile Include="SocketServer.cpp" />
     <ClCompile Include="stdStringEx.cpp" />
+    <ClCompile Include="SystemInfo.cpp" />
     <ClCompile Include="TextCode.cpp" />
     <ClCompile Include="ThreadEx.cpp" />
     <ClCompile Include="WMI.cpp" />
     <ClCompile Include="ZoyeeMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3p\Blowfish.h" />
     <ClInclude Include="3p\md5.h" />
     <ClInclude Include="AutoLockClass.h" />
     <ClInclude Include="AutoLockMacro.h" />
+    <ClInclude Include="ConfigManagement.h" />
     <ClInclude Include="CrashDebuger.h" />
     <ClInclude Include="DebugView.h" />
     <ClInclude Include="DllLoader.h" />
+    <ClInclude Include="Encrypt.h" />
     <ClInclude Include="FileManange.h" />
+    <ClInclude Include="FileMemory.h" />
     <ClInclude Include="IOCP.h" />
+    <ClInclude Include="IPCInterface.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="LiteLog.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessSnapshot.h" />
     <ClInclude Include="RegEdit.h" />
     <ClInclude Include="Regex.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ShareMemory.h" />
     <ClInclude Include="SingleProcess.hpp" />
     <ClInclude Include="SocketClient.h" />
     <ClInclude Include="SocketFactory.h" />
     <ClInclude Include="SocketServer.h" />
     <ClInclude Include="stdStringEx.h" />
+    <ClInclude Include="SystemInfo.h" />
     <ClInclude Include="TextCode.h" />
     <ClInclude Include="ThreadEx.h" />
     <ClInclude Include="WMI.h" />
     <ClInclude Include="zoyeeUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="不好抽象, 反正原版也挺好用的就不抽象直接用了吧.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

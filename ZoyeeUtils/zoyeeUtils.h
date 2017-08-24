@@ -12,5 +12,9 @@
 #include "SocketFactory.h"
 #include "RegEdit.h"
 #include "Regex.h"
-
+#include "FileMemory.h"
+#include "IPCInterface.h"
+#include "SystemInfo.h"
+#include "LiteLog.h"
+#include "Encrypt.h"
 #endif

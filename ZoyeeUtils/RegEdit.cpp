@@ -117,6 +117,6 @@ int ZoyeeUtils::CRegister::deleteKey(std::string strKey, HKEY hFatherKey )
 std::list<std::pair<std::string, ZoyeeUtils::CRegister::ValueType>> ZoyeeUtils::CRegister::EnumValue()
 {
 	std::list<std::pair<std::string, ZoyeeUtils::CRegister::ValueType>> lst;
-	//todo 
+	//todo
 	return lst;
 }

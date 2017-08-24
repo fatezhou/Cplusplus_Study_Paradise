@@ -3,7 +3,7 @@
 
 #include <Windows.h>
 //想要进程单例, 在最早的地方调用这个
-namespace zoyee{
+namespace ZoyeeUtils{
 	class CSingleProcess{
 	public:
 		CSingleProcess(char* pSingeName, int nWaitTimeout = 10) : nTimeout(nWaitTimeout), hMutex(NULL){

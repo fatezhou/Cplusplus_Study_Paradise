@@ -84,9 +84,11 @@ void ZoyeeUtils::CLiteLog::Config( const char* pConfigFile )
 	strcat(szDirPath, szFileName);
 	if (pLogFile){
 		fclose(pLogFile);
+	}	
+	if (m_nLogLevel <= 2){
+		pLogFile = fopen(szDirPath, "a");
+		fflush(pLogFile);
 	}		
-	pLogFile = fopen(szDirPath, "a");	
-	fflush(pLogFile);
 }
 
 void ZoyeeUtils::CLiteLog::Log( int nLogLevel, char* pModule, char* pCppFile, int nLine, char* pFmt, ... )
@@ -95,7 +97,7 @@ void ZoyeeUtils::CLiteLog::Log( int nLogLevel, char* pModule, char* pCppFile, in
 		return;
 	}
 	Lock();
-	fprintf(pLogFile, "\n[%s][%s][%s(%d)]", GetTime().c_str(), GetType(nLogLevel), pCppFile, nLine);
+	fprintf(pLogFile, "\n[%s][%s][%s(%d)][%s]", GetTime().c_str(), GetType(nLogLevel), pCppFile, nLine, pModule);
 	va_list ap;
 	va_start(ap, pFmt);
 	vfprintf(pLogFile, pFmt, ap);
@@ -110,7 +112,7 @@ void ZoyeeUtils::CLiteLog::Debug( char* pModule, char* pCppFile, int nLine, char
 		return;
 	}
 	Lock();
-	fprintf(pLogFile, "\n[%s][%s][%s(%d)]", GetTime().c_str(), GetType(LOG_DEBUG), pCppFile, nLine);
+	fprintf(pLogFile, "\n[%s][%s][%s(%d)][%s]", GetTime().c_str(), GetType(LOG_DEBUG), pCppFile, nLine, pModule);
 	va_list ap;
 	va_start(ap, pFmt);
 	vfprintf(pLogFile, pFmt, ap);
@@ -125,7 +127,7 @@ void ZoyeeUtils::CLiteLog::Info( char* pModule, char* pCppFile, int nLine, char*
 		return;
 	}
 	Lock();
-	fprintf(pLogFile, "\n[%s][%s][%s(%d)]", GetTime().c_str(), GetType(LOG_INFO), pCppFile, nLine);
+	fprintf(pLogFile, "\n[%s][%s][%s(%d)][%s]", GetTime().c_str(), GetType(LOG_INFO), pCppFile, nLine, pModule);
 	va_list ap;
 	va_start(ap, pFmt);
 	vfprintf(pLogFile, pFmt, ap);
@@ -140,7 +142,7 @@ void ZoyeeUtils::CLiteLog::Error( char* pModule, char* pCppFile, int nLine, char
 		return;
 	}
 	Lock();
-	fprintf(pLogFile, "\n[%s][%s][%s(%d)]", GetTime().c_str(), GetType(LOG_ERROR), pCppFile, nLine);
+	fprintf(pLogFile, "\n[%s][%s][%s(%d)][%s]", GetTime().c_str(), GetType(LOG_ERROR), pCppFile, nLine, pModule);
 	va_list ap;
 	va_start(ap, pFmt);
 	vfprintf(pLogFile, pFmt, ap);
@@ -152,4 +154,16 @@ void ZoyeeUtils::CLiteLog::Error( char* pModule, char* pCppFile, int nLine, char
 void ZoyeeUtils::CLiteLog::SetLogLevel( int nLogLevel )
 {
 	m_nLogLevel = nLogLevel;
+}
+
+void ZoyeeUtils::CLiteLog::VLog(int nLogLevel,  char* pModule, char* pCppFile, int nLine, char* pFmt, va_list& ap )
+{
+	if (m_nLogLevel > LOG_ERROR){
+		return;
+	}
+	Lock();
+	fprintf(pLogFile, "\n[%s][%s][%s(%d)][%s]", GetTime().c_str(), GetType(nLogLevel), pCppFile, nLine, pModule);
+	vfprintf(pLogFile, pFmt, ap);
+	fflush(pLogFile);
+	UnLock();
 }

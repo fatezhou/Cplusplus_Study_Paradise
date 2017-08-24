@@ -1,6 +1,6 @@
 #include "ThreadEx.h"
 #define RETRUNIFFALSE(h) if(h == nullptr)return;
-#define LOCK() ZoyeeUtils::CThreadPool::CLocker::CLocker(&cs);
+//#define LOCK() ZoyeeUtils::CThreadPool::CLocker::CLocker locker(&cs);
 
 ZoyeeUtils::CTask::CTask( void* pParam /*= nullptr*/ ) : m_pParam(pParam), hHandle(0), m_nThreadId(0)
 {
@@ -42,7 +42,7 @@ void ZoyeeUtils::CTask::Stop()
 
 int ZoyeeUtils::CTask::GetThreadId()
 {
-	return m_nThreadId;
+	return m_nThreadId == 0 ? GetCurrentThreadId() : m_nThreadId;
 }
 
 DWORD WINAPI ZoyeeUtils::CTask::ThreadFunc( void* pParam )
@@ -55,6 +55,16 @@ DWORD WINAPI ZoyeeUtils::CTask::ThreadFunc( void* pParam )
 HANDLE ZoyeeUtils::CTask::GetHandle()
 {
 	return hHandle;
+}
+
+void* ZoyeeUtils::CTask::GetParam()
+{
+	return m_pParam;
+}
+
+void ZoyeeUtils::CTask::SetParam( void* pParam )
+{
+	this->m_pParam = pParam;
 }
 
 ZoyeeUtils::CThreadPool::CLocker::CLocker(CRITICAL_SECTION* pcs)
@@ -70,7 +80,8 @@ ZoyeeUtils::CThreadPool::CLocker::~CLocker()
 
 ZoyeeUtils::CThreadPool::CThreadPool(int nSize)
 {
-	initParam();	
+	hEvent = CreateEvent(NULL, false, false, NULL);
+	initParam();
 	m_nPoolSize = nSize;
 	for (int i = 0; i < nSize; i++){
 		CreateThread(0, 0, OnThread, this, 0, 0);
@@ -80,20 +91,27 @@ ZoyeeUtils::CThreadPool::CThreadPool(int nSize)
 ZoyeeUtils::CThreadPool::~CThreadPool()
 {
 	::DeleteCriticalSection(&cs);
+	for (auto iter = m_ListThreads.begin(); iter != m_ListThreads.end(); iter++){
+		CloseHandle(*iter);
+	}
 }
 
 void ZoyeeUtils::CThreadPool::AddTask( CTask* pTask )
-{
-	LOCK();
-	m_queTasks.push(pTask);
+{	
+	CLocker locker(&cs);
+	m_queTasks.push(pTask);	
+	if (m_queTasks.size() == 1){
+		SetEvent(hEvent);
+	}
 }
 
 ZoyeeUtils::CTask* ZoyeeUtils::CThreadPool::GetTask()
 {
-	LOCK();
+	CLocker locker(&cs);
 	if (m_queTasks.empty() == false){
 		CTask* pTask = m_queTasks.front();
 		m_queTasks.pop();
+		printf("[%d]size:%d\n", GetCurrentThreadId(), m_queTasks.size());
 		return pTask;
 	}
 	return nullptr;
@@ -111,10 +129,18 @@ DWORD WINAPI ZoyeeUtils::CThreadPool::OnThread( void* pParam )
 	while(1){
 		CTask* pTask = pThis->GetTask();
 		if (pTask != nullptr){
-			pTask->Run();			
+			pTask->Run();	
 		}else{
-			Sleep(1000);
+			printf("WaitForSingleObject\n");
+			WaitForSingleObject(pThis->hEvent, INFINITE);						
 		}
 	}
 	return 0;
+}
+
+void ZoyeeUtils::CThreadPool::StopAllThread()
+{
+	for (auto iter = m_ListThreads.begin(); iter != m_ListThreads.end(); iter++){
+		TerminateThread(*iter, -1);
+	}
 }

@@ -36,6 +36,8 @@ void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocke
 #include "AutoLockMacro.h"
 #include "AutoLockClass.h"
 #include "DebugView.h"
+#include "ConfigManagement.h"
+#include "IFileConfig.h"
 
 class Base{
 public:
@@ -49,11 +51,65 @@ void Base::DoWork(){
 	_LOCK_;
 }
 
+class MyThread : public ZoyeeUtils::CTask
+{
+public:
+	void Run(){
+		int* pI = (int*)GetParam();
+		for (int i = 0; i < 1; i++){
+			printf("[%d][%d]\n", *pI, this->GetThreadId());
+			Sleep(500);
+		}		
+		//delete pI;
+	};
+};
+
 int main(){	
-	std::vector<std::string> vec;
-	vec.push_back("yz-xiaopiplayer.exe");
-	ZoyeeUtils::CDebugView view(vec);
-	view.Start();
+	LINFO("Hello");
+	ZoyeeUtils::CSystemInfo::MonitorInfo i;
+	i.GetMonitor();
+	ZoyeeUtils::CSystemInfo::CpuInfo info;
+	/*
+	ZoyeeUtils::CSystemInfo::HDInfo hdinfo;
+	hdinfo.GetInfo();*/
+	//int i = 0;
+	//std::cin >>i;
+	//if (i == 0){
+	//	ZoyeeUtils::IPC_Object* pServer = ZoyeeUtils::IPC_Interface::CreateIPCObject(ZoyeeUtils::IPC_Type::Share_Memory_Server);
+	//	pServer->Init("Hello");
+	//	for (;;){
+	//		Sleep(10000);
+	//	}
+	//}else{
+	//	ZoyeeUtils::IPC_Object* pClient = ZoyeeUtils::IPC_Interface::CreateIPCObject(ZoyeeUtils::IPC_Type::Share_Memory_Client);
+	//	pClient->Init("Hello");
+	//	for (;;){
+	//		Sleep(1000);
+	//		pClient->Send("Hello", 5);
+	//	}
+	//}
+}
+		
+
+	
+/*
+	std::string strError;
+	ZoyeeUtils::CFileMemory::CFileInfo* ptr = ZoyeeUtils::CFileMemory::FileToMemory("d:\\1\\xx.txt", strError);
+	
+	ptr->pFileCtrlPtr[0] = 'x';
+
+	ZoyeeUtils::CConfigManagement* pconfig = new ZoyeeUtils::CConfigManagement("d:\\1\\1.txt");
+	pconfig->GetSection();
+	pconfig->GetKeys("set");
+	pconfig->SetValue("set4", "OOO", "hello");
+	char sz[10];
+	sprintf(sz, "ppp=000");
+	pconfig->SetSection("set4", sz);*/
+	//ZoyeeUtils::CConfigManagement::MonitorThread(pconfig);
+	//std::vector<std::string> vec;
+	//vec.push_back("yz-xiaopiplayer.exe");
+	//ZoyeeUtils::CDebugView view(vec);
+	//view.Start();
 	//HWND hwnd = FindWindowA(NULL, "–°∆§“˝«Ê¡Ï∫Ω∞Ê-1");
 	//SendMessageA(hwnd, WM_SYSCOMMAND, SC_RESTORE, NULL);
 	//return 0;
@@ -155,7 +211,7 @@ int main(){
 	ZoyeeUtils::CFileManange::CheckFileExist("d:/11");
 	ZoyeeUtils::CFileManange::DeleteDir("x:/123");*/
 	//long lFileSize = ZoyeeUtils::CFileManange::GetFileSize("X:\\vs_temp\\piecesexperise-7e9c8f17\\PiecesExperise.sdf");
-}
+
 
 void CmdOut(int nPid, int nExitCode, std::string& pBuff){
 	printf("[pid:%d][%s]\n", nPid, pBuff.c_str());

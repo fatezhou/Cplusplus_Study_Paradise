@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "TextCode.h"
 #include "3p/md5.h"
 

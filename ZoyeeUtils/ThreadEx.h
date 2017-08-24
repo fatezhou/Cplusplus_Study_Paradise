@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <vector>
 #include <queue>
+#include <list>
 
 namespace ZoyeeUtils{
 	class CTask
@@ -20,6 +21,12 @@ namespace ZoyeeUtils{
 
 		int GetThreadId();
 		HANDLE GetHandle();
+		void* GetParam();
+		void SetParam(void* pParam);
+
+		void SetThreadId(int nId);
+		void SetThreadHandle(HANDLE hThread);
+
 	protected:
 		static DWORD WINAPI ThreadFunc(void* pParam);
 	private:
@@ -33,18 +40,21 @@ namespace ZoyeeUtils{
 		CThreadPool(int nSize = 5);
 		~CThreadPool();
 
-		void AddTask(CTask* pTask);
+		void AddTask(CTask* pTask);		
+		void StopAllThread();
 
 	protected:
 		CTask* GetTask();
 		static DWORD WINAPI OnThread(void* pParam);
 	private:
 		void initParam();
+
 		int m_nPoolSize;		
 		std::queue<CTask*> m_queTasks;
 		CRITICAL_SECTION cs;
-
 		HANDLE hEvent;
+		std::list<HANDLE> m_ListThreads;
+
 		class CLocker{
 		public:
 			CLocker(CRITICAL_SECTION* pcs);
