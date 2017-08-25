@@ -85,12 +85,14 @@
     <ClCompile Include="FileManange.cpp" />
     <ClCompile Include="FileMemory.cpp" />
     <ClCompile Include="Guid.cpp" />
+    <ClCompile Include="ILock.cpp" />
     <ClCompile Include="IOCP.cpp" />
     <ClCompile Include="IPCInterface.cpp" />
     <ClCompile Include="ISocket.cpp" />
     <ClCompile Include="LiteLog.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessSnapshot.cpp" />
+    <ClCompile Include="ReadWriteKey.cpp" />
     <ClCompile Include="RegEdit.cpp" />
     <ClCompile Include="Regex.cpp" />
     <ClCompile Include="ShareMemory.cpp" />
@@ -101,7 +103,6 @@
     <ClCompile Include="SystemInfo.cpp" />
     <ClCompile Include="TextCode.cpp" />
     <ClCompile Include="ThreadEx.cpp" />
-    <ClCompile Include="WMI.cpp" />
     <ClCompile Include="ZoyeeMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -116,12 +117,14 @@
     <ClInclude Include="Encrypt.h" />
     <ClInclude Include="FileManange.h" />
     <ClInclude Include="FileMemory.h" />
+    <ClInclude Include="ILock.h" />
     <ClInclude Include="IOCP.h" />
     <ClInclude Include="IPCInterface.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="LiteLog.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessSnapshot.h" />
+    <ClInclude Include="ReadWriteKey.h" />
     <ClInclude Include="RegEdit.h" />
     <ClInclude Include="Regex.h" />
     <ClInclude Include="resource.h" />
@@ -134,7 +137,6 @@
     <ClInclude Include="SystemInfo.h" />
     <ClInclude Include="TextCode.h" />
     <ClInclude Include="ThreadEx.h" />
-    <ClInclude Include="WMI.h" />
     <ClInclude Include="zoyeeUtils.h" />
   </ItemGroup>
   <ItemGroup>

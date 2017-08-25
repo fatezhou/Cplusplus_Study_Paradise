@@ -17,4 +17,23 @@
 #include "SystemInfo.h"
 #include "LiteLog.h"
 #include "Encrypt.h"
+
+typedef void(*p_inner_log_callback)(char* pModule, int nLogLevel, int nLine, char* pDescribe);
+p_inner_log_callback pInnerCallback = nullptr;
+void SetInnerLogCallback(p_inner_log_callback pCallback){
+	pInnerCallback = pCallback;
+};
+
+void defaultInnerLog(char* pModule, int nLogLevel, int nLine, char* pDescribe){
+	printf("[%s][%d][%d]:%s\n", pModule, nLogLevel, nLine, pDescribe);
+}
+p_inner_log_callback GetInnerLogCallback(){
+	if (pInnerCallback){
+		return pInnerCallback;
+	}
+	else{
+		return defaultInnerLog;
+	}
+};
+
 #endif

@@ -82,8 +82,16 @@ namespace ZoyeeUtils{
 		
 	private:
 		~CSystemInfo(void);
-		CSystemInfo(void);		
+		CSystemInfo(void);
 	};
+
+	std::string GetProcessPath();
+	std::string GetProcessDir();
+	std::string GetEnvironmentValue(std::string strKey);
+	std::string GetAppDataPath();
+	std::string GetTempPath();
+	std::string GetUserProfilePath();
+
 }
 
 #endif

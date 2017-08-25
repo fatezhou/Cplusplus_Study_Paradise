@@ -259,3 +259,52 @@ int ZoyeeUtils::CSystemInfo::CpuInfo::GetCoreCount()
 {
 	return nCoreCount;
 }
+
+std::string ZoyeeUtils::GetProcessPath()
+{
+	char szPath[MAX_PATH] = { 0 };
+	GetModuleFileNameA(NULL, szPath, MAX_PATH);
+	return szPath;
+}
+
+std::string ZoyeeUtils::GetProcessDir()
+{
+	std::string strDirPath = GetProcessPath();
+	int nFind = strDirPath.find_last_of('\\');
+	if (nFind == -1){
+		throw "GetProcessDir Error!!!!";
+	}
+
+	strDirPath = strDirPath.substr(0, nFind);
+	return strDirPath;
+}
+
+std::string ZoyeeUtils::GetEnvironmentValue(std::string strKey)
+{
+	char sz[1] = { 0 };
+	int nSize = GetEnvironmentVariableA(strKey.c_str(), sz, 0);
+	if (nSize <= 0){
+		return "";
+	}
+	else{
+		char* pBuffer = new char[nSize + 1];
+		memset(pBuffer, 0, nSize + 1);
+		GetEnvironmentVariableA(strKey.c_str(), pBuffer, nSize);
+		return pBuffer;
+	}
+}
+
+std::string ZoyeeUtils::GetAppDataPath()
+{
+	return GetEnvironmentValue("AppData");
+}
+
+std::string ZoyeeUtils::GetTempPath()
+{
+	return GetEnvironmentValue("TMP").empty() ? GetEnvironmentValue("TEMP") : GetEnvironmentValue("TMP");
+}
+
+std::string ZoyeeUtils::GetUserProfilePath()
+{
+	return GetEnvironmentValue("USERPROFILE");
+}

@@ -17,7 +17,7 @@ namespace ZoyeeUtils{
 		void SetMonitorCallback(pConfigFileChanged _callback);
 		static DWORD WINAPI MonitorThread(void* pParam);
 
-		class DataBlock{
+		/*class DataBlock{
 		public:
 			DataBlock(int nValue);
 			DataBlock(std::string& strValue);
@@ -34,7 +34,7 @@ namespace ZoyeeUtils{
 
 			std::string strData;			
 			bool bIsVaild;
-		};
+		};*/
 
 		//char* GetValue(const char* pKey, const char* pDefaultValue);
 		//int GetValue(const char* pKey, const int nDefaultValue);

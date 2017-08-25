@@ -17,15 +17,8 @@ namespace ZoyeeUtils{
 	private:
 		static std::string byteHexToString(char* pSrc, int nLen);
 		static std::string hexStringToByte(char* pSrc, int nLen);
-		static inline BYTE toHex(const BYTE &x)
-		{
-			return x > 9 ? x - 10 + 'A' : x + '0';
-		}
-
-		static inline BYTE toByte(const BYTE &x)
-		{
-			return (x - '0' <= 9) ? (x - '0') : (x - 'A' + 10);
-		}
+		static inline BYTE toHex(const BYTE &x){ return x > 9 ? x - 10 + 'A' : x + '0'; };
+		static inline BYTE toByte(const BYTE &x){ return (x - '0' <= 9) ? (x - '0') : (x - 'A' + 10); };
 	};
 }
 

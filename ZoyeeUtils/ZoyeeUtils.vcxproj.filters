@@ -5,38 +5,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="编码转换">
-      <UniqueIdentifier>{545e98c5-b0bb-4aaf-91b8-dfc5b6bbeb00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="基础类增强">
-      <UniqueIdentifier>{fa48c696-aaf7-4dd2-8e63-b01ac436633f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="进程">
-      <UniqueIdentifier>{aaca62e0-cd4c-428e-aa3c-e4382ac74e6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="系统信息WMI">
-      <UniqueIdentifier>{4aed1373-5756-4913-81fc-abd4449de547}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="编码转换\3p">
-      <UniqueIdentifier>{46f84c58-8268-4f35-8cfc-d4137be16070}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="线程">
-      <UniqueIdentifier>{5385e6bf-698e-4c02-ae3d-3a354e125699}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="文件管理">
-      <UniqueIdentifier>{4a5d6e6e-a584-4c33-b857-d979deba5dc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Socket">
-      <UniqueIdentifier>{0864d8c4-9bd0-467a-9a06-39de055934fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="注册表加强">
-      <UniqueIdentifier>{b22d11cb-3bc5-4eaf-be68-7e3ed74ca50a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="正则表达式">
       <UniqueIdentifier>{13110d85-9b7d-4da5-94d4-d41fafe3814e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="dump跟踪">
-      <UniqueIdentifier>{68bfba72-4a91-4add-a727-35991360ed34}</UniqueIdentifier>
     </Filter>
     <Filter Include="日志类">
       <UniqueIdentifier>{ada48702-7c9e-4c66-bd53-cd563b910f6f}</UniqueIdentifier>
@@ -44,171 +14,212 @@
     <Filter Include="Dll相关">
       <UniqueIdentifier>{58312bca-1658-495a-9f21-76fed5293ded}</UniqueIdentifier>
     </Filter>
-    <Filter Include="debugView">
-      <UniqueIdentifier>{fd7e8913-a0f8-4c93-b6e7-258604731190}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="简易自动锁">
+    <Filter Include="锁">
       <UniqueIdentifier>{646a57a8-929a-4d45-ab68-ad014b6cb9f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="传统系统信息%28WinAPI%29">
-      <UniqueIdentifier>{84959a24-9806-4631-9543-3f21cecb7a11}</UniqueIdentifier>
+    <Filter Include="字符串">
+      <UniqueIdentifier>{4da7a3e3-20cd-4275-9127-8ceef625c6d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="服务驱动等">
-      <UniqueIdentifier>{54e2505f-9a6b-42bc-b1d6-04931eada327}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="读取配置文件">
-      <UniqueIdentifier>{22be581d-9c50-4989-913e-ed1635f1c39b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="读取配置文件\3p">
-      <UniqueIdentifier>{636e0ae4-a75d-445f-b7bf-48d992c6fa46}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="文件与内存的映射">
-      <UniqueIdentifier>{82d35243-7599-4996-a709-81e59a0c6f8e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="IPC">
-      <UniqueIdentifier>{ea9fc8cf-3c17-4089-b77b-ff9fc0569d44}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="加密">
+    <Filter Include="字符串\加解密">
       <UniqueIdentifier>{7aa9cd10-9df8-418d-8155-132f3831e846}</UniqueIdentifier>
     </Filter>
-    <Filter Include="加密\3p">
+    <Filter Include="字符串\加解密\3p">
       <UniqueIdentifier>{3ab85a17-1fe7-42b4-a3f5-e6a32afbf838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="字符串\字符编码转换">
+      <UniqueIdentifier>{545e98c5-b0bb-4aaf-91b8-dfc5b6bbeb00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="字符串\字符编码转换\3p">
+      <UniqueIdentifier>{46f84c58-8268-4f35-8cfc-d4137be16070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="字符串\string类增强">
+      <UniqueIdentifier>{fa48c696-aaf7-4dd2-8e63-b01ac436633f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="通讯">
+      <UniqueIdentifier>{9e5fc12b-a2c1-4e66-aeda-50611dae08d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="通讯\IPC">
+      <UniqueIdentifier>{ea9fc8cf-3c17-4089-b77b-ff9fc0569d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="通讯\Socket">
+      <UniqueIdentifier>{0864d8c4-9bd0-467a-9a06-39de055934fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程和线程">
+      <UniqueIdentifier>{a2f93409-5ac5-4abb-b59d-6dbff6035e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程和线程\进程">
+      <UniqueIdentifier>{aaca62e0-cd4c-428e-aa3c-e4382ac74e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程和线程\线程">
+      <UniqueIdentifier>{5385e6bf-698e-4c02-ae3d-3a354e125699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件操作">
+      <UniqueIdentifier>{9d7a77bc-b786-42c7-8a7d-8550c9b233bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件操作\文件管理">
+      <UniqueIdentifier>{4a5d6e6e-a584-4c33-b857-d979deba5dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件操作\文件与内存的映射">
+      <UniqueIdentifier>{82d35243-7599-4996-a709-81e59a0c6f8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件操作\读取配置文件">
+      <UniqueIdentifier>{22be581d-9c50-4989-913e-ed1635f1c39b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件操作\读取配置文件\3p">
+      <UniqueIdentifier>{636e0ae4-a75d-445f-b7bf-48d992c6fa46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debug工具">
+      <UniqueIdentifier>{77808b6a-42f4-4596-bf1e-d7d2da74b739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debug工具\dump跟踪">
+      <UniqueIdentifier>{68bfba72-4a91-4add-a727-35991360ed34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debug工具\debugView">
+      <UniqueIdentifier>{fd7e8913-a0f8-4c93-b6e7-258604731190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="%28WinAPI%29">
+      <UniqueIdentifier>{84959a24-9806-4631-9543-3f21cecb7a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="%28WinAPI%29\注册表加强">
+      <UniqueIdentifier>{b22d11cb-3bc5-4eaf-be68-7e3ed74ca50a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextCode.cpp">
-      <Filter>编码转换</Filter>
+      <Filter>字符串\字符编码转换</Filter>
     </ClCompile>
     <ClCompile Include="stdStringEx.cpp">
-      <Filter>基础类增强</Filter>
+      <Filter>字符串\string类增强</Filter>
     </ClCompile>
     <ClCompile Include="Process.cpp">
-      <Filter>进程</Filter>
-    </ClCompile>
-    <ClCompile Include="WMI.cpp">
-      <Filter>系统信息WMI</Filter>
+      <Filter>进程和线程\进程</Filter>
     </ClCompile>
     <ClCompile Include="3p\md5.cpp">
-      <Filter>编码转换\3p</Filter>
+      <Filter>字符串\字符编码转换\3p</Filter>
     </ClCompile>
     <ClCompile Include="ThreadEx.cpp">
-      <Filter>线程</Filter>
+      <Filter>进程和线程\线程</Filter>
     </ClCompile>
     <ClCompile Include="ZoyeeMain.cpp" />
     <ClCompile Include="FileManange.cpp">
-      <Filter>文件管理</Filter>
+      <Filter>文件操作\文件管理</Filter>
     </ClCompile>
     <ClCompile Include="ProcessSnapshot.cpp">
-      <Filter>进程</Filter>
+      <Filter>进程和线程\进程</Filter>
     </ClCompile>
     <ClCompile Include="ISocket.cpp">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClCompile>
     <ClCompile Include="SocketClient.cpp">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClCompile>
     <ClCompile Include="SocketFactory.cpp">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClCompile>
     <ClCompile Include="SocketServer.cpp">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClCompile>
     <ClCompile Include="RegEdit.cpp">
-      <Filter>注册表加强</Filter>
+      <Filter>%28WinAPI%29\注册表加强</Filter>
     </ClCompile>
     <ClCompile Include="Regex.cpp">
       <Filter>正则表达式</Filter>
     </ClCompile>
     <ClCompile Include="IOCP.cpp">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClCompile>
     <ClCompile Include="Debuger.cpp">
-      <Filter>dump跟踪</Filter>
+      <Filter>debug工具\dump跟踪</Filter>
     </ClCompile>
     <ClCompile Include="CrashDebuger.cpp">
-      <Filter>dump跟踪</Filter>
+      <Filter>debug工具\dump跟踪</Filter>
     </ClCompile>
     <ClCompile Include="LiteLog.cpp">
       <Filter>日志类</Filter>
     </ClCompile>
     <ClCompile Include="DebugView.cpp">
-      <Filter>debugView</Filter>
+      <Filter>debug工具\debugView</Filter>
     </ClCompile>
     <ClCompile Include="SystemInfo.cpp">
-      <Filter>传统系统信息%28WinAPI%29</Filter>
+      <Filter>%28WinAPI%29</Filter>
     </ClCompile>
     <ClCompile Include="ConfigManagement.cpp">
-      <Filter>读取配置文件</Filter>
+      <Filter>文件操作\读取配置文件</Filter>
     </ClCompile>
     <ClCompile Include="FileMemory.cpp">
-      <Filter>文件与内存的映射</Filter>
+      <Filter>文件操作\文件与内存的映射</Filter>
     </ClCompile>
-    <ClCompile Include="Guid.cpp" />
     <ClCompile Include="IPCInterface.cpp">
-      <Filter>IPC</Filter>
+      <Filter>通讯\IPC</Filter>
     </ClCompile>
     <ClCompile Include="ShareMemory.cpp">
-      <Filter>IPC</Filter>
+      <Filter>通讯\IPC</Filter>
     </ClCompile>
     <ClCompile Include="Encrypt.cpp">
-      <Filter>加密</Filter>
+      <Filter>字符串\加解密</Filter>
     </ClCompile>
     <ClCompile Include="3p\BlowFish.cpp">
-      <Filter>加密\3p</Filter>
+      <Filter>字符串\加解密\3p</Filter>
+    </ClCompile>
+    <ClCompile Include="ILock.cpp">
+      <Filter>锁</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadWriteKey.cpp">
+      <Filter>锁</Filter>
+    </ClCompile>
+    <ClCompile Include="Guid.cpp">
+      <Filter>%28WinAPI%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextCode.h">
-      <Filter>编码转换</Filter>
+      <Filter>字符串\字符编码转换</Filter>
     </ClInclude>
     <ClInclude Include="stdStringEx.h">
-      <Filter>基础类增强</Filter>
+      <Filter>字符串\string类增强</Filter>
     </ClInclude>
     <ClInclude Include="Process.h">
-      <Filter>进程</Filter>
+      <Filter>进程和线程\进程</Filter>
     </ClInclude>
     <ClInclude Include="SingleProcess.hpp">
-      <Filter>进程</Filter>
-    </ClInclude>
-    <ClInclude Include="WMI.h">
-      <Filter>系统信息WMI</Filter>
+      <Filter>进程和线程\进程</Filter>
     </ClInclude>
     <ClInclude Include="3p\md5.h">
-      <Filter>编码转换\3p</Filter>
+      <Filter>字符串\字符编码转换\3p</Filter>
     </ClInclude>
     <ClInclude Include="ThreadEx.h">
-      <Filter>线程</Filter>
+      <Filter>进程和线程\线程</Filter>
     </ClInclude>
     <ClInclude Include="zoyeeUtils.h" />
     <ClInclude Include="FileManange.h">
-      <Filter>文件管理</Filter>
+      <Filter>文件操作\文件管理</Filter>
     </ClInclude>
     <ClInclude Include="ProcessSnapshot.h">
-      <Filter>进程</Filter>
+      <Filter>进程和线程\进程</Filter>
     </ClInclude>
     <ClInclude Include="ISocket.h">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClInclude>
     <ClInclude Include="SocketClient.h">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClInclude>
     <ClInclude Include="SocketFactory.h">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClInclude>
     <ClInclude Include="SocketServer.h">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClInclude>
     <ClInclude Include="RegEdit.h">
-      <Filter>注册表加强</Filter>
+      <Filter>%28WinAPI%29\注册表加强</Filter>
     </ClInclude>
     <ClInclude Include="Regex.h">
       <Filter>正则表达式</Filter>
     </ClInclude>
     <ClInclude Include="IOCP.h">
-      <Filter>Socket</Filter>
+      <Filter>通讯\Socket</Filter>
     </ClInclude>
     <ClInclude Include="CrashDebuger.h">
-      <Filter>dump跟踪</Filter>
+      <Filter>debug工具\dump跟踪</Filter>
     </ClInclude>
     <ClInclude Include="LiteLog.h">
       <Filter>日志类</Filter>
@@ -217,40 +228,46 @@
       <Filter>Dll相关</Filter>
     </ClInclude>
     <ClInclude Include="AutoLockClass.h">
-      <Filter>简易自动锁</Filter>
+      <Filter>锁</Filter>
     </ClInclude>
     <ClInclude Include="AutoLockMacro.h">
-      <Filter>简易自动锁</Filter>
+      <Filter>锁</Filter>
     </ClInclude>
     <ClInclude Include="DebugView.h">
-      <Filter>debugView</Filter>
+      <Filter>debug工具\debugView</Filter>
     </ClInclude>
     <ClInclude Include="SystemInfo.h">
-      <Filter>传统系统信息%28WinAPI%29</Filter>
+      <Filter>%28WinAPI%29</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="ConfigManagement.h">
-      <Filter>读取配置文件</Filter>
+      <Filter>文件操作\读取配置文件</Filter>
     </ClInclude>
     <ClInclude Include="FileMemory.h">
-      <Filter>文件与内存的映射</Filter>
+      <Filter>文件操作\文件与内存的映射</Filter>
     </ClInclude>
     <ClInclude Include="IPCInterface.h">
-      <Filter>IPC</Filter>
+      <Filter>通讯\IPC</Filter>
     </ClInclude>
     <ClInclude Include="ShareMemory.h">
-      <Filter>IPC</Filter>
+      <Filter>通讯\IPC</Filter>
     </ClInclude>
     <ClInclude Include="Encrypt.h">
-      <Filter>加密</Filter>
+      <Filter>字符串\加解密</Filter>
     </ClInclude>
     <ClInclude Include="3p\Blowfish.h">
-      <Filter>加密\3p</Filter>
+      <Filter>字符串\加解密\3p</Filter>
+    </ClInclude>
+    <ClInclude Include="ILock.h">
+      <Filter>锁</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadWriteKey.h">
+      <Filter>锁</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="不好抽象, 反正原版也挺好用的就不抽象直接用了吧.txt">
-      <Filter>读取配置文件</Filter>
+      <Filter>文件操作\读取配置文件</Filter>
     </None>
   </ItemGroup>
 </Project>
