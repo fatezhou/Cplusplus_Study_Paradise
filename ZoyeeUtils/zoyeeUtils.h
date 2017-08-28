@@ -17,6 +17,7 @@
 #include "SystemInfo.h"
 #include "LiteLog.h"
 #include "Encrypt.h"
+#include "ILock.h"
 
 typedef void(*p_inner_log_callback)(char* pModule, int nLogLevel, int nLine, char* pDescribe);
 p_inner_log_callback pInnerCallback = nullptr;

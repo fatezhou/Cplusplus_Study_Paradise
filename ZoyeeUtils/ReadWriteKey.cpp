@@ -85,7 +85,7 @@ int ZoyeeUtils::CReadWriteKey::GetState()
 
 void ZoyeeUtils::CReadWriteKey::AddWriteCount()
 {
-	SetEvent(m_hWriteWaitEvent);
+	ResetEvent(m_hWriteWaitEvent);
 	SetState(State_Write);
 	::EnterCriticalSection(&m_csWriteCount);
 	m_nWriteCountRef++;
@@ -99,7 +99,7 @@ void ZoyeeUtils::CReadWriteKey::RemoveWriteCount()
 	if (m_nWriteCountRef <= 0){
 		SetState(State_Read);
 		m_nWriteCountRef = 0;
-		ResetEvent(m_hWriteWaitEvent);
+		SetEvent(m_hWriteWaitEvent);
 	}
 	::LeaveCriticalSection(&m_csWriteCount);
 }

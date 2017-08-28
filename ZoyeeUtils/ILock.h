@@ -26,6 +26,7 @@ namespace ZoyeeUtils{
 	};
 
 	class KeyMaker{
+	public:
 		enum
 		{
 			Mutex_Key,

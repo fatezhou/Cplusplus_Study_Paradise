@@ -1,26 +1,26 @@
 #include "zoyeeUtils.h"
 #include <Windows.h>
 
-class CThreadTest : public ZoyeeUtils::CTask{
-public:
-	CThreadTest(int nId);
-	void Run();
-private:
-	int m_nId;
-};
-
-CThreadTest::CThreadTest( int nId )
-{
-	m_nId = nId;
-}
-
-void CThreadTest::Run()
-{
-	for (int i = 0; i < 10; i++){
-		printf("[%d]\n", m_nId);
-		Sleep(500);
-	}
-}
+//class CThreadTest : public ZoyeeUtils::CTask{
+//public:
+//	CThreadTest(int nId);
+//	void Run();
+//private:
+//	int m_nId;
+//};
+//
+//CThreadTest::CThreadTest( int nId )
+//{
+//	m_nId = nId;
+//}
+//
+//void CThreadTest::Run()
+//{
+//	for (int i = 0; i < 10; i++){
+//		printf("[%d]\n", m_nId);
+//		Sleep(500);
+//	}
+//}
 
 ZoyeeUtils::emCopyFileRes CopyFileCallback(long lTotalFileSize, long lTotalBytesTransferred){
 	printf("%08ld / %08ld\n", lTotalBytesTransferred, lTotalFileSize);
@@ -39,36 +39,82 @@ void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocke
 #include "ConfigManagement.h"
 #include "IFileConfig.h"
 
-class Base{
-public:
-	void DoWork();
-	IMPLEMENT_LOCKING(Base);
-	_KEY_;
-};
+//class Base{
+//public:
+//	void DoWork();
+//	IMPLEMENT_LOCKING(Base);
+//	_KEY_;
+//};
+//
+//void Base::DoWork(){
+//	AUTOLOCK;
+//	_LOCK_;
+//}
+//
+//class MyThread : public ZoyeeUtils::CTask
+//{
+//public:
+//	void Run(){
+//		int* pI = (int*)GetParam();
+//		for (int i = 0; i < 1; i++){
+//			printf("[%d][%d]\n", *pI, this->GetThreadId());
+//			Sleep(500);
+//		}		
+//		//delete pI;
+//	};
+//};
 
-void Base::DoWork(){
-	AUTOLOCK;
-	_LOCK_;
+ZoyeeUtils::IKey* pKey = ZoyeeUtils::KeyMaker::CreateKey(ZoyeeUtils::KeyMaker::ReadWrite_Key);
+
+void FuncR(){
+	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::readLock);
+	for (int i = 0; i < 5; i++){
+		Sleep(1000);
+		printf("R\n");
+	}	
 }
 
-class MyThread : public ZoyeeUtils::CTask
-{
-public:
-	void Run(){
-		int* pI = (int*)GetParam();
-		for (int i = 0; i < 1; i++){
-			printf("[%d][%d]\n", *pI, this->GetThreadId());
-			Sleep(500);
-		}		
-		//delete pI;
-	};
-};
+void FuncR2(){
+	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::readLock);
+	for (int i = 0; i < 5; i++){
+		Sleep(1000);
+		printf("R2\n");
+	}
+}
 
+void FuncW(){
+	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::writeLock);
+	for (int i = 0; i < 5; i++){
+		Sleep(1000);
+		printf("W\n");
+	}
+}
+
+void FuncW2(){
+	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::writeLock);
+	for (int i = 0; i < 5; i++){
+		Sleep(1000);
+		printf("W2\n");
+	}
+}
+#include <thread>
 int main(){	
-	LINFO("Hello");
-	ZoyeeUtils::CSystemInfo::MonitorInfo i;
-	i.GetMonitor();
-	ZoyeeUtils::CSystemInfo::CpuInfo info;
+	HANDLE hEvent = CreateEvent(NULL, false, false, NULL);
+
+
+	std::thread(FuncW).detach();
+	std::thread(FuncW2).detach();
+	std::thread(FuncR).detach();
+	std::thread(FuncR2).detach();
+
+	WaitForSingleObject(hEvent, INFINITE);
+	return 0;
+
+
+	//LINFO("Hello");
+	//ZoyeeUtils::CSystemInfo::MonitorInfo i;
+	//i.GetMonitor();
+	//ZoyeeUtils::CSystemInfo::CpuInfo info;
 	/*
 	ZoyeeUtils::CSystemInfo::HDInfo hdinfo;
 	hdinfo.GetInfo();*/
