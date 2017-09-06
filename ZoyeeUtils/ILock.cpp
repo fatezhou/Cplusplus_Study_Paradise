@@ -58,12 +58,10 @@ namespace ZoyeeUtils{
 			return new CNormalKey;
 		case ReadWrite_Key:
 			return new CReadWriteKey;
-		case FIFO_Key:
-		case FILO_Key:
-			break;
 		default:
 			break;
 		}
+		throw "Error Key";
 		return nullptr;
 	}
 }

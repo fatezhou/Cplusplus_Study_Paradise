@@ -67,32 +67,32 @@ void OnRecv(char* pBuff, int nLen, ZoyeeUtils::RecvType type, ZoyeeUtils::ISocke
 ZoyeeUtils::IKey* pKey = ZoyeeUtils::KeyMaker::CreateKey(ZoyeeUtils::KeyMaker::ReadWrite_Key);
 
 void FuncR(){
-	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::readLock);
 	for (int i = 0; i < 5; i++){
+		ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::readLock);
 		Sleep(1000);
 		printf("R\n");
 	}	
 }
 
 void FuncR2(){
-	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::readLock);
 	for (int i = 0; i < 5; i++){
+		ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::readLock);
 		Sleep(1000);
 		printf("R2\n");
 	}
 }
 
 void FuncW(){
-	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::writeLock);
 	for (int i = 0; i < 5; i++){
+		ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::writeLock);
 		Sleep(1000);
 		printf("W\n");
 	}
 }
 
 void FuncW2(){
-	ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::writeLock);
 	for (int i = 0; i < 5; i++){
+		ZoyeeUtils::CLock lock(pKey, ZoyeeUtils::writeLock);
 		Sleep(1000);
 		printf("W2\n");
 	}
@@ -102,10 +102,11 @@ int main(){
 	HANDLE hEvent = CreateEvent(NULL, false, false, NULL);
 
 
-	std::thread(FuncW).detach();
-	std::thread(FuncW2).detach();
-	std::thread(FuncR).detach();
 	std::thread(FuncR2).detach();
+	std::thread(FuncR).detach();
+	Sleep(2000);
+	std::thread(FuncW2).detach();
+	std::thread(FuncW).detach();
 
 	WaitForSingleObject(hEvent, INFINITE);
 	return 0;

@@ -5,13 +5,6 @@
 #include <Windows.h>
 using namespace std;
 
-
-bool ZoyeeUtils::CTextCode::ToWchar( char* pSrc, wchar_t* pDesc )
-{
-	int nLen = ::MultiByteToWideChar(CP_ACP, 0, (char*)pSrc, -1, NULL, NULL);
-	return (MultiByteToWideChar(CP_ACP, 0, (char*)pSrc, -1, pDesc, nLen) == nLen);
-}
-
 std::wstring ZoyeeUtils::CTextCode::ToWchar( char* pSrc )
 {
 	std::wstring wstr;
@@ -24,12 +17,6 @@ std::wstring ZoyeeUtils::CTextCode::ToWchar( char* pSrc )
 	return wstr;
 }
 
-bool ZoyeeUtils::CTextCode::ToChar( wchar_t* pSrc, char* pDesc )
-{
-	int nLen = ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)pSrc, -1, 0, 0, 0, 0);
-	return (WideCharToMultiByte(CP_ACP, 0, (wchar_t*)pSrc, -1, pDesc, nLen, 0, 0) == nLen);
-}
-
 std::string ZoyeeUtils::CTextCode::ToChar( wchar_t* pSrc )
 {
 	std::string str;
@@ -40,17 +27,6 @@ std::string ZoyeeUtils::CTextCode::ToChar( wchar_t* pSrc )
 	str.resize(nLen);
 	WideCharToMultiByte(CP_ACP, 0, (wchar_t*)pSrc, -1, (char*)str.data(), nLen, 0, 0);
 	return str;
-}
-
-bool ZoyeeUtils::CTextCode::GBK2UTF8( char* pBuff )
-{
-	int nLen = ::MultiByteToWideChar(CP_ACP, 0, (char*)pBuff, -1, NULL, NULL);
-	wstring wstrBuff;
-	wstrBuff.resize(nLen + 2);
-	MultiByteToWideChar(CP_ACP, 0, (char*)pBuff, -1, (wchar_t*)wstrBuff.data(), nLen);
-
-	nLen = ::WideCharToMultiByte(CP_UTF8, 0, (wchar_t*)wstrBuff.data(), -1, NULL, 0, NULL, NULL); 	 
-	return ::WideCharToMultiByte(CP_UTF8, 0, (wchar_t*)wstrBuff.data(), -1, (char *)pBuff, nLen, NULL, NULL) == nLen;
 }
 
 std::string ZoyeeUtils::CTextCode::ToUTF8(char* pSrc){
@@ -79,17 +55,6 @@ std::string ZoyeeUtils::CTextCode::ToUTF8(char* pSrc){
 		}
 	}
 	return strResult;
-}
-
-bool ZoyeeUtils::CTextCode::UTF82GBK( char* pBuff )
-{
-	int nLen = ::MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, NULL, NULL);
-	wstring wstrBuff;
-	wstrBuff.resize(nLen + 2);
-	MultiByteToWideChar(CP_UTF8, 0, (char*)pBuff, -1, (wchar_t*)wstrBuff.data(), nLen);
-
-	nLen = ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)wstrBuff.data(), -1, NULL, 0, NULL, NULL); 	 
-	return ::WideCharToMultiByte(CP_ACP, 0, (wchar_t*)wstrBuff.data(), -1, (char *)pBuff, nLen, NULL, NULL) == nLen;
 }
 
 std::string ZoyeeUtils::CTextCode::Base64Encode( const char* pSrc, int nLen )
