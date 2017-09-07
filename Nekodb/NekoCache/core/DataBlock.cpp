@@ -5,8 +5,9 @@ Neko::CDataBlock::CDataBlock(const std::string& strId, const std::string& strDat
 {
 	this->m_strId = strId;
 	this->m_strData = strData;
-	this->m_lTimeoutSecond = lTimeoutSecond;
 	this->m_lInsertTime = time(0);
+	this->m_lFutureTimeoutTime = time(0) + lTimeoutSecond;
+	this->m_lTimeout = lTimeoutSecond;
 }
 
 Neko::CDataBlock::~CDataBlock()
@@ -24,24 +25,15 @@ std::string& Neko::CDataBlock::GetData()
 	return this->m_strData;
 }
 
-long Neko::CDataBlock::GetTimeoutSecond()
+long Neko::CDataBlock::GetFutureTimeoutTime()
 {
-	return this->m_lTimeoutSecond;
-}
-
-long Neko::CDataBlock::GetSpan()
-{	
-	return (time(0) - m_lInsertTime);
-}
-
-bool Neko::CDataBlock::IsTimeout()
-{
-	return ((time(0) - this->m_lInsertTime) < 0);
+	return this->m_lFutureTimeoutTime;
 }
 
 void Neko::CDataBlock::RefreshTimeout()
 {
 	this->m_lInsertTime = time(0);
+	this->m_lFutureTimeoutTime = time(0) + this->m_lTimeout;
 }
 
 void Neko::CDataBlock::SetData(const std::string& strData, bool bRefreshTime /*= true*/)
@@ -49,5 +41,6 @@ void Neko::CDataBlock::SetData(const std::string& strData, bool bRefreshTime /*=
 	this->m_strData = strData;
 	if (bRefreshTime){
 		this->m_lInsertTime = time(0);
+		this->m_lFutureTimeoutTime = time(0) + this->m_lTimeout;
 	}
 }

@@ -21,7 +21,9 @@ namespace Neko{
 	private:
 		void init();
 		int m_nSize;
-		std::map<std::string, CDataBlock*> m_mapCached;
+		std::hash_map<std::string, CDataBlock*> m_mapCached;
+		std::multimap<long, std::string> m_mapTimeoutChecker;
+
 		std::recursive_mutex m_mutexMap;
 		std::string m_strNull = "";
 	};

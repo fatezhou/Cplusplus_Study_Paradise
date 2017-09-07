@@ -11,17 +11,16 @@ namespace Neko{
 
 		std::string& GetId();
 		std::string& GetData();
-		long GetTimeoutSecond();
-		long GetSpan();
-		bool IsTimeout();
+		long GetFutureTimeoutTime();
 		void RefreshTimeout();
 		void SetData(const std::string& strData, bool bRefreshTime = true);
 
 	private:
 		std::string m_strId;
 		std::string m_strData;
+		long m_lTimeout;
 		long m_lInsertTime;
-		long m_lTimeoutSecond;
+		long m_lFutureTimeoutTime;
 	};
 }
 

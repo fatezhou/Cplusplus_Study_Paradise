@@ -17,6 +17,7 @@ int Neko::CCached::Set(const std::string& strId, const std::string& strData, lon
 	}
 
 	m_mapCached.insert(std::make_pair(strId, pDataBlock));
+	m_mapTimeoutChecker.insert(std::make_pair(pDataBlock->GetFutureTimeoutTime(), strId));
 	return m_mapCached.size();
 }
 
@@ -29,7 +30,19 @@ std::string& Neko::CCached::Get(const std::string strId, bool bRefreshTime /*= t
 	}
 
 	if (bRefreshTime){
+		long lTimeout = iter->second->GetFutureTimeoutTime();
+		std::multimap<long, std::string>::iterator iterBegin, iterEnd;
+		iterBegin = m_mapTimeoutChecker.equal_range(lTimeout).first;
+		iterEnd = m_mapTimeoutChecker.equal_range(lTimeout).second;
+
+		for (auto timeoutIter = iterBegin; timeoutIter != iterEnd; timeoutIter++){
+			if (timeoutIter->second == strId){
+				m_mapTimeoutChecker.erase(timeoutIter);
+				break;
+			}
+		}
 		iter->second->RefreshTimeout();
+		m_mapTimeoutChecker.insert(std::make_pair(iter->second->GetFutureTimeoutTime(), strId));
 	}
 	return iter->second->GetData();
 }
@@ -47,24 +60,15 @@ int Neko::CCached::GetCachedSize()
 void Neko::CCached::RemoveOneTimeoutData()
 {	
 	LockMap();
-	std::string strId;
-	long lMin = 0x0fffffff;	
-	for (auto iter = m_mapCached.begin(); iter != m_mapCached.end(); iter++){
-		if (iter->second->IsTimeout()){
-			m_mapCached.erase(iter);
-			return;
-		}
-		else{
-			if (iter->second->GetSpan() < lMin){
-				lMin = iter->second->GetSpan();
-				strId = iter->first;
-			}
-		}
-	}
+	auto iter = m_mapTimeoutChecker.begin();
+	if (iter != m_mapTimeoutChecker.end()){
+		std::string strId = iter->second;
+		m_mapTimeoutChecker.erase(iter);
 
-	auto iter = m_mapCached.find(strId);
-	if (iter != m_mapCached.end()){
-		m_mapCached.erase(iter);
+		auto findIter = m_mapCached.find(strId);
+		if (findIter != m_mapCached.end()){
+			m_mapCached.erase(findIter);
+		}
 	}
 }
 
