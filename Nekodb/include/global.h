@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <hash_map>
 #include <list>
 #include <vector>
 #include <iostream>

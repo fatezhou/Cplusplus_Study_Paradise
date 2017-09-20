@@ -4,7 +4,7 @@
 void _TextOut(const std::string& strText){
 	printf("---[%s]\n", strText.c_str());
 }
-
+#pragma comment(lib, "ole32")
 std::string MakeGuid(){
 	char szGUID[64];
 #ifdef WIN32
@@ -61,7 +61,7 @@ int main(int n, char** v){
 	printf("[after sets][%d]\n", GetTickCount() - nNow);
 	nNow = GetTickCount();
 	printf("[ready to find][%d]\n", GetTickCount());
-	int nGetPos[] = { 10000, 38000, 40000, 45000, 48000, 49000 };
+	int nGetPos[] = { 10000, 15000, 25000, 35000, 45000, 49990 };
 	for (int i = 0; i < 6; i++){
 		std::string strGet = cached.Get(pStrGuid[nGetPos[i]]);
 		printf("[gets][%d]\n", GetTickCount() - nNow);
