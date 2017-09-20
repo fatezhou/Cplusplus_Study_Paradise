@@ -15,6 +15,10 @@ namespace Neko{
 		};
 		~MsgConfig(){
 			::DeleteCriticalSection(&cs);
+			for (auto iter = m_msgFunc.begin(); iter != m_msgFunc.end(); iter++){
+				delete iter->second;
+			}
+			m_msgFunc.clear();
 		}
 		void Lock(){
 			EnterCriticalSection(&cs);
@@ -42,8 +46,6 @@ namespace Neko{
 			unsigned int nMsg;
 		};
 		std::map<unsigned int, MsgFunc*> m_msgFunc;
-		std::map<unsigned int, pMsgWorkHandler> m_MsgHandlerMap;
-		std::map<unsigned int, pMsgCallback> m_MsgCallback;
 		CRITICAL_SECTION cs;
 		std::promise<bool> unInitPromise;
 	};
@@ -100,6 +102,9 @@ namespace Neko{
 
 	int PostMsg(unsigned int nMsg, unsigned int wParam, unsigned int lParam)
 	{
+		if (nMsg <= 0){
+			return 0;
+		}
 		return PostThreadMessage(g_pConfig->nThreadId, nMsg, wParam, lParam);
 	}
 
@@ -107,9 +112,11 @@ namespace Neko{
 	{
 		if (g_pConfig){
 			PostMsg(WM_QUIT, 0, 0);
-			try{
+			try{				
 				g_pConfig->unInitPromise.get_future().get();
 				g_pConfig->unInitPromise = std::promise<bool>();
+				delete g_pConfig;
+				g_pConfig = nullptr;
 			}
 			catch (...){
 
